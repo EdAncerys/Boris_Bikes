@@ -1,19 +1,20 @@
 require 'docking_station'
-require 'bikes'
+require 'bike'
 
 describe DockingStation do
   # Step 8 Unit test
   it { is_expected.to respond_to :release_bike}
-
+  # Step 9 Unit test
   it 'release working bikes' do
     # dock = DockingStation.new
+    subject.dock(Bike.new)
     bike = subject.release_bike
-    expect(bike).to be_working
+    expect(bike).to be_working 
   end
 
-  # it { is_expected.to respond_to(:dock).with(1).argument }
+  it { is_expected.to respond_to(:dock).with(1).argument }
 
-  # it { is_expected.to respond_to(:bike) }
+  it { is_expected.to respond_to(:bike) }
 
   it 'dock something ' do
     bike = Bike.new
@@ -32,12 +33,14 @@ describe DockingStation do
       # remember subject == DockingStation.new
       expect { subject.release_bike }.to raise_error 'No bikes available'
     end
+  
   end
 
-  describe '#dock' do
-    it 'raises an error when full' do
-      subject.dock(Bike.new)
-      expect { subject.dock Bike.new }.to raise_error 'Docking station full'
-    end
-  end
+  # describe '#dock' do
+  #   it 'raises an error when full' do
+  #     20.times { subject.dock Bike.new }
+  #     expect { subject.dock Bike.new }.to raise_error 'Docking station full'
+  #   end
+  # end
+
 end

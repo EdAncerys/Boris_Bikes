@@ -19,4 +19,13 @@
 |---|---|---|---|---|
 | Person  |  |
 |  Bike | dock |
-|  Docking station | is_empty? |
+|  DockingStation | is_empty? |
+
+
+## Domain Model 3
+
+| Object  | Messages  |   
+|---|---|---|---|---|
+| Maintainer  |  |
+|  Bike | dock |
+|  DockingStation | is_full? |
