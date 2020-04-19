@@ -1,5 +1,6 @@
-class Bike 
+
+class Bike
   def working?
-    true 
+    true
   end
 end
