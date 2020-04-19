@@ -60,4 +60,12 @@ describe DockingStation do
     expect{ subject.release_bike }.to raise_error 'Bike is broken'
   end
 
+  # I'd like docking stations to accept returning bikes (broken or not).
+  it 'should dock bike if #broken?' do
+    bike = Bike.new
+    bike.report_broken
+    subject.dock bike
+    expect(subject.dock(bike).shift).to eq bike
+  end
+
 end
