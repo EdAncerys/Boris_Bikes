@@ -13,6 +13,8 @@ class DockingStation
   def release_bike
     fail 'No bikes available' if empty?
     
+    fail 'Bike is broken' if broken?
+
     @bike_station.shift
   end
   
@@ -28,6 +30,10 @@ class DockingStation
 
   def full?
     @bike_station.length >= capacity
+  end
+
+  def broken?
+    Bike.new.broken.class
   end
 
 end
