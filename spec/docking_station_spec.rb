@@ -3,12 +3,6 @@ require 'bike'
 
 describe DockingStation do
 
-  # I'd like to see if a bike is working
-  it 'release working bikes' do
-    bike = Bike.new
-    expect(bike.working?).to eq true
-  end
-  
   # I'd like to get a bike from a docking station.
   it { is_expected.to respond_to(:dock).with(1).argument }
   
