@@ -14,12 +14,12 @@ describe DockingStation do
   # I want to dock my bike at the docking station
   it 'dock bike at the docking station' do
     bike = Bike.new
-    expect(subject.dock(bike)).not_to eq nil
+    expect(subject.dock(bike).shift).to eq bike
   end
 
   # I want to see a bike that has been docked
   it 'returns docked bikes' do
-    bike = Bike.new
+    bike = double(:bike)
     expect(subject.dock(bike).shift).to eq bike
   end
   
@@ -33,7 +33,7 @@ describe DockingStation do
   # I'd like docking stations not to accept more bikes than their capacity.
   describe '#dock' do
     it 'raises an error when full' do
-      bike = Bike.new
+      bike = double(:bike)
       DockingStation::DEFAULT_CAPACITY.times { subject.dock(bike) }
       expect { subject.dock bike }.to raise_error 'Docking station full'
     end
