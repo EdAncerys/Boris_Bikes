@@ -3,7 +3,7 @@ require 'bike'
 
 describe DockingStation do
 
-  before(:each) { @bike = Bike.new }
+  before(:each) { @bike = double(:bike) }
 
   it { is_expected.to respond_to(:dock).with(1).argument }
   
@@ -60,8 +60,9 @@ describe DockingStation do
     expect{ subject.release_bike }.to raise_error message
   end
 
-  it 'should dock bike if #broken?' do
+  it 'should #dock bike if #broken?' do
     subject.dock(@bike, true)
+    allow(@bike).to receive(:report_broken) { true }
     expect(subject.broken?).to eq @bike.report_broken
   end
 
