@@ -18,8 +18,15 @@ class DockingStation
     @bike_station.shift
   end
   
-  def dock(bike)
+  def dock(bike, broken = false)
     fail 'Docking station full' if full?
+
+    bike = Bike.new
+
+    if broken
+      bike.report_broken
+      print 'Bike is broken'
+    end
     
     @bike_station << bike
   end
@@ -33,7 +40,7 @@ class DockingStation
   end
 
   def broken?
-    Bike.new.broken.class
+    @bike_station.shift.broken?
   end
 
 end
