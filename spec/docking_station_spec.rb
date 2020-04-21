@@ -9,7 +9,7 @@ describe DockingStation do
   
   it { is_expected.to respond_to :release_bike }
 
-  # it { is_expected.to respond_to(:bike) }
+  it { is_expected.to respond_to :dock }
   
   it 'should be able to #dock bike at the station' do
     subject.dock @bike
